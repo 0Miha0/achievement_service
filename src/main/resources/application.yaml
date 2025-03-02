@@ -24,6 +24,10 @@ spring:
       channel:
         achievement: achievement_channel
         follower: follower_channel
+        comment: comment-event-channel
+        publish_post: publish_post_channel
+        project_create: project_create_channel
+        like: like-event-channel
 
 server:
   port: 8085
@@ -35,3 +39,9 @@ logging:
 project-service:
   host: localhost
   port: 8082
+
+async:
+  event-listener:
+    corePoolSize: 5
+    maxPoolSize: 10
+    queueCapacity: 30
