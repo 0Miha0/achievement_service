@@ -22,7 +22,6 @@ public class CommentEvent {
     @NotNull
     private Long actorId;
 
-    @NotNull
     private LocalDateTime receivedAt;
 }
 
