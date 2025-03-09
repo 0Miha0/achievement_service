@@ -19,7 +19,7 @@ public class CommentAchievementHandler extends AbstractAchievementHandler<Commen
 
     @Override
     public boolean supportsEvent(Class<?> event) {
-        return FollowerEvent.class.equals(event);
+        return CommentEvent.class.equals(event);
     }
 
     @Override

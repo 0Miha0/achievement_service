@@ -22,6 +22,5 @@ public class LikeEvent {
     @NotNull
     private Long receiverId;
 
-    @NotNull
     private LocalDateTime receiverAt;
 }

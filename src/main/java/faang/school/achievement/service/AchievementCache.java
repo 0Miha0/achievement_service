@@ -1,6 +1,6 @@
 package faang.school.achievement.service;
 
-import faang.school.achievement.model.Achievement;
+import faang.school.achievement.dto.AchievementDto;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CachePut;
@@ -15,16 +15,16 @@ public class AchievementCache {
 
     @PostConstruct
     public void fillCache() {
-        achievementService.findAll().forEach(this::cacheAchievement);
+        achievementService.findAllDto().forEach(this::cacheAchievement);
     }
 
     @Cacheable(value = "achievements", key = "#title", cacheManager = "cacheManager")
-    public Achievement get(String title) {
-        return cacheAchievement(achievementService.findByTitle(title));
+    public AchievementDto get(String title) {
+        return cacheAchievement(achievementService.findByTitleDto(title));
     }
 
     @CachePut(value = "achievements", key = "#achievement.title", cacheManager = "cacheManager")
-    public Achievement cacheAchievement(Achievement achievement) {
+    public AchievementDto cacheAchievement(AchievementDto achievement) {
         return achievement;
     }
 }
